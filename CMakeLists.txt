@@ -60,7 +60,7 @@ set_target_properties(tklog PROPERTIES
 # ------------------------------------------------------------
 # Installation
 # ------------------------------------------------------------
-if(TKLOG_INSTALL)
+if(TKLOG_INSTALL AND CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     include(GNUInstallDirs)
 
     install(TARGETS tklog
