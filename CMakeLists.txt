@@ -37,7 +37,7 @@ FetchContent_MakeAvailable(verstable)
 add_library(tklog STATIC src/tklog.c)
 add_library(tklog::tklog ALIAS tklog)
 target_compile_definitions(tklog
-    PRIVATE      # propagate to anything that links tklog
+    PUBLIC      # propagate to anything that links tklog
         TKLOG_SCOPE
         TKLOG_MEMORY
 )
