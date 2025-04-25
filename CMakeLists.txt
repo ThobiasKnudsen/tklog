@@ -37,10 +37,23 @@ FetchContent_MakeAvailable(verstable)
 add_library(tklog STATIC src/tklog.c)
 add_library(tklog::tklog ALIAS tklog)
 target_compile_definitions(tklog
-    PUBLIC      # propagate to anything that links tklog
+    PUBLIC                    # or INTERFACE
         TKLOG_SCOPE
         TKLOG_MEMORY
+        TKLOG_SHOW_TKLOG_LEVEL
+        TKLOG_SHOW_TIME
+        TKLOG_SHOW_THREAD
+        TKLOG_SHOW_PATH
+        TKLOG_DEBUG
+        TKLOG_INFO
+        TKLOG_NOTICE
+        TKLOG_WARNING
+        TKLOG_ERROR
+        TKLOG_CRITICAL
+        TKLOG_ALERT
+        TKLOG_EMERGENCY
 )
+
 
 target_include_directories(tklog PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/include
