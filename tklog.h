@@ -18,6 +18,11 @@
 #define TK_CRITICAL 7
 #define TK_FATAL    8
 
+#define TK_SHOW_LEVEL   1u << 0
+#define TK_SHOW_TIME    1u << 1
+#define TK_SHOW_THREAD  1u << 2
+#define TK_SHOW_PATH    1u << 3
+
 // default log function
 #include <stdio.h>
 void _tk_log_default_function(const char* msg) {
