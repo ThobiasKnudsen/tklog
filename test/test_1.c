@@ -23,6 +23,8 @@
 #define TKLOG_ALERT
 #define TKLOG_EMERGENCY
 
+#define TKLOG_IMPLEMENTATION
+
 #include "tklog.h"
 #include <SDL3/SDL.h>
 #include <stdint.h>
@@ -40,7 +42,7 @@ static int worker(void *userdata)
 {
     intptr_t id = (intptr_t)userdata;
 
-    tklog_scope({
+    tklog_scope(
         
         tklog_scope(foo());
 
@@ -57,7 +59,7 @@ static int worker(void *userdata)
 
         /* simulate some activity */
         SDL_Delay(10 + (id * 5));
-    });
+    );
 
     tklog_warning("worker %zd finished", id);
     return 0;
@@ -74,7 +76,7 @@ int main(int argc, char **argv)
     }
 
 
-    tklog_scope({
+    tklog_scope(
         tklog_info("main: creating worker threads");
 
         /* quick heap play in main thread */
@@ -95,7 +97,7 @@ int main(int argc, char **argv)
 
         /* dump live allocations (should be empty) */
         tklog_memory_dump();
-    });
+    );
 
     tklog_alert("main: finished entire test run");
 
