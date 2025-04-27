@@ -1,11 +1,19 @@
-#ifndef TKLOG_H
-#define TKLOG_H
+#ifndef TK_LOG_H
+#define TK_LOG_H
 
 #include <cstdio>
+#include <stdio.h>
+
+
+#if defined(__FILE_NAME__)
+    #define __TKLOG_FILE_NAME__  __FILE_NAME__
+#else
+    #define __TKLOG_FILE_NAME__  (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
+#endif
 
 // Ensure LOG_LEVEL is defined
-#ifndef TKLOG_LEVEL
-#define TKLOG_LEVEL 0 // Default: No logging
+#ifndef TK_LOG_LEVEL
+#define TK_LOG_LEVEL 0 // Default: No logging
 #endif
 
 // Logging levels
@@ -18,13 +26,31 @@
 #define TK_CRITICAL 7
 #define TK_FATAL    8
 
-#define TK_SHOW_LEVEL   1u << 0
-#define TK_SHOW_TIME    1u << 1
-#define TK_SHOW_THREAD  1u << 2
-#define TK_SHOW_PATH    1u << 3
+// what column to show
+#ifdef TK_SHOW_LEVEL
+    #define TK_F_SHOW_LEVEL     1u << 0
+#elif 
+    #define TK_F_SHOW_LEVEL     0u
+#endif 
+#ifdef TK_SHOW_TIME
+    #define TK_F_SHOW_TIME      1u << 1
+#elif 
+    #define TK_F_SHOW_TIME      0u
+#endif 
+#ifdef TK_SHOW_THREAD
+    #define TK_F_SHOW_THREAD    1u << 2
+#elif 
+    #define TK_F_SHOW_THREAD    0u
+#endif 
+#ifdef TK_SHOW_PATH
+    #define TK_F_SHOW_PATH      1u << 3
+#elif 
+    #define TK_F_SHOW_PATH      0u
+#endif 
+
+#define TK_SHOW_FLAGS (TK_F_SHOW_LEVEL | TK_F_SHOW_TIME | TK_F_SHOW_THREAD | TK_F_SHOW_PATH)
 
 // default log function
-#include <stdio.h>
 void _tk_log_default_function(const char* msg) {
     printf(msg);
 }
