@@ -5,7 +5,8 @@
 #define TK_SHOW_LEVEL
 #define TK_SHOW_TIME
 #define TK_SHOW_PATH
-#include "tk_log.h"
+#include "tklog.h"
+
 
 void foo1() {
     TK_LOG(TK_TRACE, "This is a trace message: %d", 123);
@@ -14,12 +15,15 @@ void foo1() {
     TK_LOG(TK_WARNING, "This is a warning");
 }
 
+// Clear all configuration macros
+#include "tklog_undef.h"
+
 // Second configuration: Log FATAL only, show level, time, and thread
 #define TK_LOG_LEVEL TK_FATAL
 #define TK_SHOW_LEVEL
 #define TK_SHOW_TIME
 #define TK_SHOW_THREAD
-#include "tk_log.h"
+#include "tklog.h"
 
 void foo2() {
     TK_LOG(TK_TRACE, "This is a trace message: %d", 123);
@@ -31,12 +35,15 @@ void foo2() {
     TK_LOG(TK_FATAL, "This is a fatal");
 }
 
+// Clear all configuration macros
+#include "tklog_undef.h"
+
 // Third configuration: Log DEBUG and above, show level, path, and scope
 #define TK_LOG_LEVEL TK_DEBUG
 #define TK_SHOW_LEVEL
 #define TK_SHOW_PATH
 #define TK_ENABLE_SCOPE
-#include "tk_log.h"
+#include "tklog.h"
 
 void foo3() {
     TK_LOG(TK_TRACE, "This is a trace message: %d", 123);
