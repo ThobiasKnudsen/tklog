@@ -127,13 +127,10 @@ bool my_logger(const char *msg, void *user) {
 
 Wrap code blocks to auto-push/pop call path:
 ```c
-tklog_scope({
-    tklog_info("Entering function");
-    // Nested scopes build path: e.g., "main.c:5 → func.c:10"
-    tklog_scope({
-        tklog_debug("Deep inside");
-    });
-});
+// Just use these for time tracking:
+tklog_timer_start();
+[code]
+tklog_timer_stop();
 ```
 
 Output:
