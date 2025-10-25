@@ -138,8 +138,45 @@ tklog_scope({
 
 Output:
 ```
-INFO     | 1ms | tid 123 | main.c:5 → func.c:8 | Entering function
-DEBUG    | 1ms | tid 123 | main.c:5 → func.c:8 → inner.c:12 | Deep inside
+  0ms |     57 calls | 0.004ms avg | tsm.c:1206
+  0ms |     57 calls | 0.004ms avg |     tsm.c:1206 to tsm.c:1243
+  0ms |      0 calls | 0.000ms avg | test_tsm.c:188
+ 95ms |  53225 calls | 0.002ms avg | tsm.c:1011
+ 95ms |  53225 calls | 0.002ms avg |     tsm.c:1011 to tsm.c:1038
+  1ms |    182 calls | 0.007ms avg | tsm.c:1249
+  1ms |    181 calls | 0.007ms avg |     tsm.c:1249 to tsm.c:1345
+  0ms |      1 calls | 0.015ms avg |     tsm.c:1249 to tsm.c:1330
+  7ms | 196872 calls | 0.000ms avg | tsm.c:900
+  7ms | 196872 calls | 0.000ms avg |     tsm.c:900 to tsm.c:904
+  2ms |  70000 calls | 0.000ms avg | tsm.c:943
+  0ms |      6 calls | 0.001ms avg |     tsm.c:943 to tsm.c:954
+  2ms |  69994 calls | 0.000ms avg |     tsm.c:943 to tsm.c:966
+411ms |  69311 calls | 0.006ms avg | test_tsm.c:194
+  0ms |      2 calls | 0.002ms avg |     test_tsm.c:194 to test_tsm.c:362
+  0ms |     25 calls | 0.011ms avg |     test_tsm.c:194 to test_tsm.c:486
+131ms |  17481 calls | 0.008ms avg |     test_tsm.c:194 to test_tsm.c:253
+  1ms |    182 calls | 0.009ms avg |     test_tsm.c:194 to test_tsm.c:370
+  0ms |    205 calls | 0.001ms avg |     test_tsm.c:194 to test_tsm.c:315
+ 45ms |  15994 calls | 0.003ms avg |     test_tsm.c:194 to test_tsm.c:498
+  0ms |      6 calls | 0.002ms avg |     test_tsm.c:194 to test_tsm.c:200
+  0ms |      1 calls | 0.003ms avg |     test_tsm.c:194 to test_tsm.c:294
+  0ms |     57 calls | 0.010ms avg |     test_tsm.c:194 to test_tsm.c:572
+  0ms |      1 calls | 0.419ms avg |     test_tsm.c:194 to test_tsm.c:581
+  0ms |    628 calls | 0.000ms avg |     test_tsm.c:194 to test_tsm.c:450
+  3ms |   6792 calls | 0.000ms avg |     test_tsm.c:194 to test_tsm.c:283
+  3ms |   6794 calls | 0.000ms avg |     test_tsm.c:194 to test_tsm.c:343
+215ms |   1463 calls | 0.147ms avg |     test_tsm.c:194 to test_tsm.c:424
+  0ms |    522 calls | 0.001ms avg |     test_tsm.c:194 to test_tsm.c:278
+  7ms |  17108 calls | 0.000ms avg |     test_tsm.c:194 to test_tsm.c:258
+  0ms |   2050 calls | 0.000ms avg |     test_tsm.c:194 to test_tsm.c:505
+ 10ms |   5810 calls | 0.002ms avg | tsm.c:1434
+ 10ms |   5810 calls | 0.002ms avg |     tsm.c:1434 to tsm.c:1489
+ 96ms |  29101 calls | 0.003ms avg | tsm.c:1085
+ 96ms |  29101 calls | 0.003ms avg |     tsm.c:1085 to tsm.c:1129
+  0ms |   1399 calls | 0.000ms avg | tsm.c:981
+  0ms |   1399 calls | 0.000ms avg |     tsm.c:981 to tsm.c:1005
+  1ms |  70000 calls | 0.000ms avg | test_tsm.c:190
+  1ms |  70000 calls | 0.000ms avg |     test_tsm.c:190 to test_tsm.c:193
 ```
 
 ### Memory Tracking (TKLOG_MEMORY)
